@@ -15,12 +15,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentAudio = null;
 
+    // Creative segmented language pill toggle
+    const langPills = document.querySelectorAll('.lang-pill');
+    langPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            langPills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            languageSelect.value = pill.dataset.lang;
+        });
+    });
+
+    // Allow Enter key to submit
+    usernameInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            submitBtn.click();
+        }
+    });
+
     submitBtn.addEventListener('click', async () => {
         const username = usernameInput.value.trim();
         const language = languageSelect.value;
 
         if (!username) {
-            showError('Please enter a GitHub username');
+            showError('Maryadhakk username enter chei');
             return;
         }
 
