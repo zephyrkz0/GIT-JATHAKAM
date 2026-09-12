@@ -53,44 +53,49 @@ node local-server.js
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](public/img2.png)
+![Screenshot1](public/img1.png)
+*The Welcome Screen: Ready to read the stars of your repositories.*
+
+![Screenshot2](public/img2.png)
 *The Grand Roast: Our AI brutally judging your GitHub history.*
 
-![Screenshot2](public/img4.png)
+![Screenshot3](public/img4.png)
 *The Dramatic Setup: Select your language and let the stars decide your fate.*
 
-![Screenshot3](public/astrologer.png)
-*The Astrologer: Our highly unqualified AI guru staring into your soul.*
-
 # Diagrams
-![Workflow](https://github.com/user-attachments/assets/8920b256-2ba8-4988-b824-5351134eb4bd)
-*System Architecture Diagram: Client-server interaction model showing data flow from GitHub API to the Stat Engine, LLM processing, and TTS generation.*
 
-For Hardware:
+```mermaid
+graph TD
+    User[User (Frontend)] -->|Inputs Username| UI[Browser Interface]
+    UI -->|POST /api/jaathakam| Backend[Vercel Serverless API]
+    
+    Backend -->|Fetch Repository Stats| GitHub[GitHub API]
+    GitHub -->|Returns Raw Data| Backend
+    
+    Backend -->|Analyze Activity| StatEngine[Statistics Engine]
+    StatEngine -->|Generates Facts| Backend
+    
+    Backend -->|Send Facts & Prompt| Gemini[Google Gemini 3.6 Flash]
+    Gemini -->|Returns Horoscope Roast| Backend
+    
+    Backend -->|JSON Response| UI
+    
+    UI -->|Request TTS Audio| TTSApi[POST /api/tts]
+    TTSApi -->|Send Roast Text| Sarvam[Sarvam AI API]
+    Sarvam -->|Returns Audio Stream| TTSApi
+    TTSApi -->|Audio Playback| User
+```
 
-# Schematic & Circuit
-![Circuit](N/A)
-*Not Applicable: This project is entirely software-based.*
+### Project Demo
+# Video
+[N/A]
+*Not Applicable: No video demonstration provided.*
 
-![Schematic](N/A)
-*Not Applicable: No hardware components are used in this project.*
-
-# Build Photos
-![Components](N/A)
-*Not Applicable.*
-
-![Build](N/A)
-*Not Applicable.*
-
-![Final](N/A)
-*Not Applicable.*
-
-
-# Additional Demos
+# Project link
 [👉 Try the live demo right here!](https://git-jathakam.vercel.app/)
 
 ## Team Contributions
-- Kasinath R: solo so contributed everything
+- Zephyr: Full Stack Developer (Solo Developer responsible for frontend UI, Express.js backend, and AI API integrations).
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
