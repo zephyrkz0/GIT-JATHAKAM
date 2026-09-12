@@ -100,7 +100,7 @@ For Software:
 [👉 Try the live demo right here!](https://git-jathakam.vercel.app/)
 
 ## Team Contributions
-- Zephyr: Full Stack Developer (Solo Developer responsible for frontend UI, Express.js backend, and AI API integrations).
+- Kasinath R: Full Stack Developer (Solo Developer responsible for frontend UI, Express.js backend, and AI API integrations).
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
