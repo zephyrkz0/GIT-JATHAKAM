@@ -1,0 +1,323 @@
+:root {
+    --bg-dark: #0a0a0f;
+    --gold: #d4af37;
+    --gold-glow: rgba(212, 175, 55, 0.4);
+    --text-light: #e0e0e0;
+    --parchment: #f4e4bc;
+    --parchment-dark: #d2b48c;
+    --ink: #3b2f2f;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background & Decorations */
+.stars {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at center, transparent 0%, #000 100%),
+                url('data:image/svg+xml;utf8,<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="1" fill="%23ffffff" opacity="0.5"/></svg>');
+    background-size: cover, 100px 100px;
+    z-index: -1;
+    animation: drift 60s linear infinite;
+}
+
+@keyframes drift {
+    from { background-position: 0 0, 0 0; }
+    to { background-position: 0 0, 1000px 500px; }
+}
+
+.god-decor {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(212, 175, 55, 0.05); /* Placeholder for God images */
+    border-radius: 50%;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+.god-decor.top-left { top: -50px; left: -50px; }
+.god-decor.top-right { top: -50px; right: -50px; }
+.god-decor.bottom-left { bottom: -50px; left: -50px; }
+.god-decor.bottom-right { bottom: -50px; right: -50px; }
+
+/* Main Container */
+.container {
+    text-align: center;
+    z-index: 10;
+    width: 100%;
+    max-width: 800px;
+    padding: 2rem;
+    position: relative;
+}
+
+/* Top Left Custom GIF */
+.custom-gif-placeholder {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 80px;
+    height: 80px;
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    color: var(--gold);
+    animation: pulse 3s infinite;
+}
+
+/* Header */
+.main-title {
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem;
+    color: var(--gold);
+    text-shadow: 0 0 20px var(--gold-glow);
+    margin-bottom: 0.5rem;
+    letter-spacing: 4px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+/* Input Area */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 3rem;
+    border-radius: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+input[type="text"], select {
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem 1.5rem;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--gold);
+    border-radius: 30px;
+    color: var(--text-light);
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    outline: none;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+input[type="text"]:focus, select:focus {
+    box-shadow: 0 0 15px var(--gold-glow);
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* Buttons */
+.mystic-btn {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 1rem 2.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.mystic-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+    transition: left 0.5s;
+}
+
+.mystic-btn:hover {
+    background: var(--gold);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--gold-glow);
+}
+
+.mystic-btn:hover::before {
+    left: 100%;
+}
+
+.mystic-btn.secondary {
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+    margin-top: 2rem;
+}
+
+.mystic-btn.small {
+    font-size: 0.9rem;
+    padding: 0.5rem 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Loading State (Jyothishyan) */
+.jyothishyan-gif {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.loader-wheel {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed var(--gold);
+    border-radius: 50%;
+    animation: spin 10s linear infinite;
+    position: relative;
+}
+
+.loader-wheel::after {
+    content: 'ॐ';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: var(--gold);
+    animation: counter-spin 10s linear infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes counter-spin { 100% { transform: translate(-50%, -50%) rotate(-360deg); } }
+
+/* Result State (Parchment) */
+.parchment-wrapper {
+    perspective: 1000px;
+    margin-top: 2rem;
+}
+
+.parchment-paper {
+    background: linear-gradient(to bottom right, var(--parchment), var(--parchment-dark));
+    color: var(--ink);
+    padding: 3rem 4rem;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.8), inset 0 0 50px rgba(139,69,19,0.3);
+    position: relative;
+    transform-origin: top;
+    transform: rotateX(-90deg);
+    opacity: 0;
+    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.5s ease;
+    min-height: 300px;
+    border: 1px solid rgba(139,69,19,0.2);
+}
+
+.parchment-paper.open {
+    transform: rotateX(0deg);
+    opacity: 1;
+}
+
+.parchment-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(139,69,19,0.3);
+    padding-bottom: 0.5rem;
+}
+
+.mystic-text {
+    font-family: 'Noto Sans Malayalam', serif;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    text-align: left;
+    min-height: 100px;
+    white-space: pre-wrap;
+}
+
+/* Cursor typing effect */
+.mystic-text::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+}
+.mystic-text.done::after {
+    content: '';
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+.audio-controls {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(139,69,19,0.3);
+}
+
+/* Utilities */
+.hidden {
+    display: none !important;
+}
+
+.error {
+    color: #ff4444;
+    margin-top: 1rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .input-group {
+        padding: 1.5rem;
+    }
+    
+    input[type="text"], select {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+    }
+    
+    .parchment-paper {
+        padding: 2rem 1.5rem;
+    }
+    
+    .parchment-title {
+        font-size: 1.5rem;
+    }
+    
+    .mystic-text {
+        font-size: 1.1rem;
+    }
+    
+    .god-decor {
+        width: 80px;
+        height: 80px;
+    }
+}

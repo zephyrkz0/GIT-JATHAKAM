@@ -1,0 +1,18 @@
+{
+  "en": [
+    "Midnight coding: {username}, {midnight_pct}% of your commits happen after midnight. Shani has personally revoked your sleep quota. Saturn doesn't forgive, only compiles.",
+    "Weekend commits: {weekend_pct}% of your commits land on Saturday and Sunday. Your family thinks you have a job. Your GitHub thinks you have a problem.",
+    "Commit message chaos: Your commit history reads 'fix', 'fix2', 'final_fix', 'actual_final_fix'. This is not a dosham, {username}. This is a cry for help.",
+    "Longest silence gap: There is a {gap_days}-day gap in your commit history. We call this the Vanvaas period. Some say you were 'busy'. The stars say you were watching one more episode.",
+    "PR merge ratio: Your PR merge ratio is {merge_pct}%. This means most of what you propose, the universe (and your reviewers) reject. Deeply symbolic of your dating life, probably.",
+    "Closer: Final prediction: you will ship the feature. Late. At 2am. On a Sunday. Exactly as the stars intended."
+  ],
+  "ml": [
+    "Midnight coding: {username}, നിന്റെ commits-ന്റെ {midnight_pct}% അർദ്ധരാത്രിക്ക് ശേഷമാണ്. ശനി നിന്റെ ഉറക്കത്തിന്റെ ക്വോട്ട സ്വയം പിൻവലിച്ചു. ശനിക്ക് മാപ്പില്ല, compile മാത്രമേ ഉള്ളൂ.",
+    "Weekend commits: {username}, നിന്റെ commits-ൽ {weekend_pct}% ശനിയാഴ്ചയും ഞായറാഴ്ചയുമാണ്. വീട്ടുകാർ വിചാരിക്കുന്നു നിനക്ക് ജോലിയുണ്ടെന്ന്. GitHub-ന് അറിയാം നിനക്ക് ഒരു പ്രശ്നം ഉണ്ടെന്ന്.",
+    "Commit message chaos: നിന്റെ commit history-ൽ 'fix', 'fix2', 'final_fix', 'actual_final_fix' എന്നൊക്കെയാണ്. {username}, ഇത് ദോഷമല്ല, ഇത് ഒരു നിലവിളിയാണ്.",
+    "Longest silence gap: നിന്റെ commit history-ൽ {gap_days} ദിവസത്തെ നിശബ്ദത കാണുന്നു. ഇതിനെ ഞങ്ങൾ വനവാസം എന്ന് വിളിക്കുന്നു. ചിലർ പറയും തിരക്കായിരുന്നെന്ന്, നക്ഷത്രങ്ങൾ പറയും ഒരു episode കൂടി കണ്ടതാണെന്ന്.",
+    "PR merge ratio: നിന്റെ PR merge ratio {merge_pct}% മാത്രമാണ്. അതായത് നീ പറയുന്നതിൽ കൂടുതലും ലോകം — reviewers ഉൾപ്പെടെ — തള്ളിക്കളയുന്നു. ഇത് നിന്റെ പ്രണയജീവിതത്തിന്റെ പ്രതീകമായിരിക്കാം.",
+    "Closer: അന്തിമ പ്രവചനം: നീ ഈ feature ship ചെയ്യും. വൈകിയിട്ടാകും. രാത്രി 2 മണിക്ക്. ഞായറാഴ്ച. കൃത്യം നക്ഷത്രങ്ങൾ ഉദ്ദേശിച്ചത് പോലെ."
+  ]
+}

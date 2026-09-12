@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Jaathakam</title>
+    <style>
+        @font-face {
+            font-family: 'OpenBoek';
+            src: url('openboek-notregular.otf') format('opentype'),
+                 url('./openboek-notregular.otf');
+            font-weight: normal;
+            font-style: normal;
+        }
+        .main-title {
+            font-family: 'OpenBoek', fantasy, sans-serif;
+            font-size: 3.5rem;
+            margin: 0 0 1rem 0;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: sans-serif; text-align: center;">
+
+    <h1 class="main-title">GITHUB JATHAKAM</h1>
+    
+    <div id="input-section">
+        <p>Discover the astrological truth of your code</p>
+        <input type="text" id="github-username" placeholder="Enter GitHub Username">
+        
+        <select id="language-select">
+            <option value="en">English</option>
+            <option value="ml">Malayalam</option>
+        </select>
+        
+        <button id="submit-btn">Jaathakam Nokku</button>
+        <div id="error-message" style="color: red; display: none;"></div>
+    </div>
+
+    <div id="loading-section" style="display: none;">
+        <p>Consulting the stars... (Loading)</p>
+    </div>
+
+    <div id="result-section" style="display: none;">
+        <h2>Your Jaathakam</h2>
+        <div id="revealed-text"></div>
+        <div id="audio-container" style="display: none;">
+            <button id="play-audio-btn">Listen (Bulbul TTS)</button>
+        </div>
+        <br>
+        <button id="reset-btn">Try Another</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
