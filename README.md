@@ -64,34 +64,39 @@ For Software:
 
 # Diagrams
 
-```mermaid
-graph TD
-    User[User (Frontend)] -->|Inputs Username| UI[Browser Interface]
-    UI -->|POST /api/jaathakam| Backend[Vercel Serverless API]
-    
-    Backend -->|Fetch Repository Stats| GitHub[GitHub API]
-    GitHub -->|Returns Raw Data| Backend
-    
-    Backend -->|Analyze Activity| StatEngine[Statistics Engine]
-    StatEngine -->|Generates Facts| Backend
-    
-    Backend -->|Send Facts & Prompt| Gemini[Google Gemini 3.6 Flash]
-    Gemini -->|Returns Horoscope Roast| Backend
-    
-    Backend -->|JSON Response| UI
-    
-    UI -->|Request TTS Audio| TTSApi[POST /api/tts]
-    TTSApi -->|Send Roast Text| Sarvam[Sarvam AI API]
-    Sarvam -->|Returns Audio Stream| TTSApi
-    TTSApi -->|Audio Playback| User
+```text
++-------------------+        POST /api/jaathakam         +-----------------------+
+|                   | ---------------------------------> |                       |
+|  User (Frontend)  |                                    | Vercel Serverless API |
+|                   | <--------------------------------- |                       |
++-------------------+       JSON Roast & Stats           +-----------------------+
+          |                                                |         ^
+          | POST /api/tts                                  |         |
+          v                                                |         |
++-------------------+                                      |         |
+|                   | <------- Returns Audio ------------- |         |
+|  Sarvam AI (TTS)  |                                      v         |
+|                   | -------- Request Text Audio -------> +---------+
++-------------------+                                      |         |
+                                                           |         |
++-------------------+        Fetch Profile Stats         +---------+
+|                   | <--------------------------------- |                       |
+|    GitHub API     |                                    |   Statistics Engine   |
+|                   | ---------------------------------> |                       |
++-------------------+          Raw Data Returns          +-----------------------+
+                                                                   |         ^
+                                                                   |         |
++-------------------+       Generates Roast Text         +---------+         |
+|                   | <--------------------------------- |                       |
+| Gemini 3.6 Flash  |                                    |  LLM Prompt Handler   |
+|                   | ---------------------------------> |                       |
++-------------------+         Horoscope Text             +-----------------------+
 ```
 
-### Project Demo
-# Video
-[N/A]
-*Not Applicable: No video demonstration provided.*
+*System Architecture Diagram: Client-server interaction model showing data flow from GitHub API to the Stat Engine, LLM processing, and TTS generation.*
 
-# Project link
+
+# live link
 [👉 Try the live demo right here!](https://git-jathakam.vercel.app/)
 
 ## Team Contributions
