@@ -32,7 +32,7 @@ app.post('/jaathakam', async (req, res) => {
         const stats = calculateStats(rawData);
 
         // 3. Rule Table
-        const facts = getAstrologyFacts(stats);
+        const facts = getAstrologyFacts(stats, rawData);
 
         // 4. LLM Generation
         const generatedText = await generateJoke(username, language, facts);
@@ -45,7 +45,7 @@ app.post('/jaathakam', async (req, res) => {
 
     } catch (error) {
         console.error('Error generating Jaathakam:', error);
-        res.status(500).json({ error: 'Failed to generate Jaathakam. The stars are clouded today.' });
+        res.status(500).json({ error: error.message || 'Failed to generate Jaathakam. The stars are clouded today.' });
     }
 });
 
@@ -64,6 +64,10 @@ app.post('/tts', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;

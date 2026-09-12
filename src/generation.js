@@ -1,17 +1,18 @@
-const axios = require('axios');
+const { GoogleGenAI } = require('@google/genai');
 const fs = require('fs');
 const path = require('path');
 
 async function generateJoke(username, language, facts) {
-    if (!process.env.GROK_API_KEY) {
-        throw new Error('GROK_API_KEY is not set');
+    if (!process.env.GEMINI_API_KEY) {
+        throw new Error('GEMINI_API_KEY is not set');
     }
 
+    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+
     // Load reference jokes
-    const referencesPath = path.join(__dirname, '../prompts/references.json');
     let allReferences = { en: [], ml: [] };
     try {
-        allReferences = JSON.parse(fs.readFileSync(referencesPath, 'utf8'));
+        allReferences = require('../prompts/references.json');
     } catch (e) {
         console.warn('Failed to load references.json, continuing without references.');
     }
@@ -43,24 +44,18 @@ ${referenceJokesStr}
     const prompt = `Write the GitHub Jaathakam reading for user: ${username}`;
 
     try {
-        const response = await axios.post('https://api.x.ai/v1/chat/completions', {
-            model: "grok-beta",
-            messages: [
-                { role: "system", content: persona },
-                { role: "user", content: prompt }
-            ],
-            temperature: 0.8
-        }, {
-            headers: {
-                'Authorization': `Bearer ${process.env.GROK_API_KEY}`,
-                'Content-Type': 'application/json'
-            }
+        console.log(`[Gemini] Generating Jaathakam with model: gemini-3.6-flash for user: ${username}`);
+        const response = await ai.models.generateContent({
+            model: 'gemini-3.6-flash',
+            contents: [
+                { role: 'user', parts: [{ text: persona + '\n\n' + prompt }] }
+            ]
         });
 
-        return response.data.choices[0].message.content.trim();
+        return response.text;
     } catch (error) {
-        console.error('Grok generation error:', error.response?.data || error.message);
-        throw new Error('Failed to consult the stars (Grok LLM Error)');
+        console.error('Gemini generation error:', error);
+        throw new Error('Failed to consult the stars (Gemini LLM Error)');
     }
 }
 

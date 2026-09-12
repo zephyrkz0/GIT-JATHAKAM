@@ -238,20 +238,39 @@
 
         #reset-btn,
         #play-audio-btn {
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            border: 1px solid #cbd5e1;
-            background: #ffffff;
-            color: #1e293b;
-            font-weight: 500;
+            padding: 0.7rem 1.6rem;
+            border-radius: 10px;
+            border: 2px solid #8b6914;
+            background: linear-gradient(135deg, #f5e6c8 0%, #e8d5a3 50%, #d4b978 100%);
+            color: #5c3d0e;
+            font-weight: 600;
+            font-size: 0.95rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 10px rgba(139, 105, 20, 0.2);
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
         }
 
         #reset-btn:hover,
         #play-audio-btn:hover {
-            background: #f8fafc;
-            border-color: #94a3b8;
+            background: linear-gradient(135deg, #d4b978 0%, #c9a85c 50%, #b8963e 100%);
+            border-color: #6b4f10;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(139, 105, 20, 0.35);
+        }
+
+        #play-audio-btn {
+            background: linear-gradient(135deg, #5c3d0e 0%, #7a5518 50%, #8b6914 100%);
+            color: #f5e6c8;
+            border-color: #a07d2e;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        #play-audio-btn:hover {
+            background: linear-gradient(135deg, #7a5518 0%, #8b6914 50%, #a07d2e 100%);
+            border-color: #c9a85c;
         }
 
         #revealed-text {
@@ -295,14 +314,15 @@
         }
 
         .astrologer-img {
-            max-width: clamp(230px, 28vw, 360px);
+            max-width: clamp(480px, 55vw, 750px);
             width: 100%;
             height: auto;
-            margin-top: 0.75rem;
+            margin: -1.25rem auto 0 auto;
             display: block;
+            align-self: center;
             pointer-events: none;
             user-select: none;
-            filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08));
+            filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.1));
         }
 
         .bells-bottom-right {
@@ -357,7 +377,7 @@
             body { padding: 0.5rem 1rem; }
             .main-title { font-size: 2.5rem; margin-bottom: 0.25rem; }
             .center-banner-gif { max-width: 280px; margin-bottom: 0.5rem; }
-            .astrologer-img { max-width: 250px; margin-top: 0.4rem; }
+            .astrologer-img { max-width: min(520px, 50vw); margin-top: -1rem; }
             .dancing-cat-left { height: 135px; }
             .dancing-cat-right { height: 115px; width: 115px; }
             .deepam-bottom-left { width: 130px; }
@@ -367,7 +387,7 @@
         @media (max-height: 650px) {
             .main-title { font-size: 2.1rem; }
             .center-banner-gif { max-width: 220px; margin-bottom: 0.35rem; }
-            .astrologer-img { max-width: 190px; }
+            .astrologer-img { max-width: min(420px, 44vw); margin-top: -1.2rem; }
             .dancing-cat-left { height: 100px; }
             .dancing-cat-right { height: 85px; width: 85px; }
         }
@@ -438,7 +458,7 @@
 
     <h1 class="main-title">GITHUB JATHAKAM</h1>
 
-    <img src="Screen Recording 2026-09-12 125051.gif" alt="Jaathakam Animation" class="center-banner-gif">
+    <img src="banner.gif" alt="Jaathakam Animation" class="center-banner-gif">
 
     <div id="input-section">
         <!-- Creative Segmented Language Switch (Malayalam by default) -->
@@ -489,14 +509,14 @@
             <img src="dancing-cat-right.gif" onerror="this.src='https://media.giphy.com/media/VSLIjK1WyV3GbT5m9G/giphy.gif'" alt="Dancing Cat" class="dancing-cat dancing-cat-right">
         </div>
 
-        <div id="error-message" style="color: #ef4444; font-size: 0.9rem; display: none; margin-top: 6px;"></div>
+        <div id="error-message" style="color: #ef4444; font-size: 0.95rem; display: none; margin-top: 6px; text-align: center; width: 100%;"></div>
 
         <img src="astrologer.png" alt="Astrologer" class="astrologer-img">
     </div>
 
     <div id="loading-section" style="display: none;">
-        <img src="astrologer gif.gif" alt="Consulting the stars" style="max-width: 260px; width: 100%; height: auto; border-radius: 12px; margin: 0.5rem auto 1rem auto; display: block; box-shadow: 0 4px 14px rgba(0,0,0,0.1);">
-        <p style="font-size: 1.1rem; font-weight: 500; color: #475569;">നക്ഷത്രങ്ങൾ നോക്കുന്നു... Consulting the stars...</p>
+        <img src="astrologer-loading.gif" alt="Consulting the stars" style="max-width: clamp(520px, 70vw, 750px); width: 100%; height: auto; border-radius: 16px; margin: 0.5rem auto 1.25rem auto; display: block; box-shadow: 0 8px 28px rgba(0,0,0,0.18);">
+        <p style="font-size: 1.35rem; font-weight: 600; color: #334155; text-align: center;">നക്ഷത്രങ്ങൾ നോക്കുന്നു... Consulting the stars...</p>
     </div>
 
     <div id="result-section" style="display: none;">
@@ -504,9 +524,9 @@
         <div id="revealed-text"></div>
         <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
             <div id="audio-container" style="display: none;">
-                <button id="play-audio-btn">Listen (Bulbul TTS)</button>
+                <button id="play-audio-btn">Hear it out loud</button>
             </div>
-            <button id="reset-btn">Try Another</button>
+            <button id="reset-btn">Try another</button>
         </div>
     </div>
 
