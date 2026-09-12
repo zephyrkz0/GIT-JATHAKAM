@@ -1,5 +1,7 @@
 # 🌟 Jaathakam: The Git Astrologer 🌟
 
+**[👉 Try it live here! (https://git-jathakam.vercel.app/)](https://git-jathakam.vercel.app/)**
+
 <img src="public/img1.png" alt="Jaathakam Intro" width="100%">
 
 Are you tired of rational metrics? Do you look at your GitHub contributions graph and think, *"What do the stars say about my commit history?"* Look no further! 
