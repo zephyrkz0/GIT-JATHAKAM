@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/jaathakam",
+      "destination": "/api/jaathakam"
+    },
+    {
+      "source": "/tts",
+      "destination": "/api/tts"
+    },
+    {
+      "source": "/",
+      "destination": "/public/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/public/$1"
+    }
+  ]
+}
