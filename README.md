@@ -15,9 +15,7 @@ Are you tired of rational metrics? Do you look at your GitHub contributions grap
 Here is what this beautiful catastrophe looks like in action:
 
 <p align="center">
-  <img src="public/img2.png" alt="Screenshot 2" width="45%">
-  &nbsp; &nbsp;
-  <img src="public/img3.png" alt="Screenshot 3" width="45%">
+  <img src="public/img2.png" alt="Jaathakam Output" width="80%">
 </p>
 
 ### What it actually does:
