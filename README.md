@@ -1,102 +1,72 @@
-<img width="1280" height="640" alt="git (1)" src="https://github.com/user-attachments/assets/8920b256-2ba8-4988-b824-5351134eb4bd" />
+# 🌟 Jaathakam: The Git Astrologer 🌟
 
+<img src="public/img1.png" alt="Jaathakam Intro" width="100%">
 
+Are you tired of rational metrics? Do you look at your GitHub contributions graph and think, *"What do the stars say about my commit history?"* Look no further! 
 
-# [Project Name] 🎯
-
-
-## Basic Details
-### Team Name: [Name]
-
-
-### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
-
-### Project Description
-[2-3 lines about what your project does]
-
-### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
-
-### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
-
-## Technical Details
-### Technologies/Components Used
-For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
-
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
-
-### Implementation
-For Software:
-# Installation
-[commands]
-
-# Run
-[commands]
-
-### Project Documentation
-For Software:
-
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
-
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
-### Project Demo
-# Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
-
-# Additional Demos
-[Add any extra demo materials/links]
-
-## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+**Jaathakam** is an absolutely useless, highly judgmental, AI-powered astrology app that reads your GitHub profile like a palm and brutally roasts your coding habits in multiple languages (English, Malayalam, Hindi, and Tamil). 
 
 ---
-Made with ❤️ at TinkerHub Useless Projects 
 
-![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
-![Static Badge](https://img.shields.io/badge/UselessProjects--26-26?link=https%3A%2F%2Ftinkerhub.org%2Fevents%2F1M8ORET9A1%2Fuseless-projects-3.0)
+## 🔮 The Grand Tour
 
+Here is what this beautiful catastrophe looks like in action:
 
+<p align="center">
+  <img src="public/img2.png" alt="Screenshot 2" width="45%">
+  &nbsp; &nbsp;
+  <img src="public/img3.png" alt="Screenshot 3" width="45%">
+</p>
+
+### What it actually does:
+1. **Stalks you:** We ping the GitHub API to fetch your repos, stars, forks, and the exact time you push code (we see those 3 AM commits, you goblin).
+2. **Judges you:** A sophisticated "Stat Engine" categorizes your behavior. Are you a "Fork Hoarder"? A "Night Owl"? 
+3. **Roasts you:** Google's Gemini 3.6 Flash LLM spins up a personalized, slightly unhinged horoscope.
+4. **Speaks to you:** Sarvam AI converts the roast into dramatic text-to-speech audio while temple bells ring ominously in the background.
+
+<p align="center">
+  <img src="public/img4.png" alt="The Grand Finale" width="80%">
+</p>
+
+---
+
+## 🤡 The Problem (That Nobody Asked to Solve)
+
+The developer ecosystem is far too professional. LinkedIn is full of "thrilled to announce" posts. GitHub is full of "clean code". We wanted to bring the chaotic, unsolicited advice of an overly dramatic neighborhood astrologer directly to your repositories. 
+
+It solves the very pressing issue of: *“I have imposter syndrome, but I want an AI to confirm it using astrology.”*
+
+---
+
+## 🛠️ The Tech Stack (Because we had to write code)
+
+- **Frontend:** Vanilla HTML, CSS, JavaScript (Yes, we raw-dogged the DOM. React is for people who don't like pain).
+- **Backend:** Node.js, Express (Deployed via Vercel Serverless Functions).
+- **AI Brains:** `gemini-3.6-flash` (Because we demanded the absolute bleeding edge of snark).
+- **Voice Actor:** Sarvam AI TTS (Bringing the roasting to life in crisp audio).
+- **Vibes:** Pure unadulterated chaos.
+
+---
+
+## 🚀 How to Run This Dumpster Fire Locally
+
+1. Clone this repository (and question your life choices).
+2. Run `npm install` to download half the internet.
+3. Create a `.env` file at the root and feed it your API keys:
+   ```env
+   GEMINI_API_KEY=your_gemini_key_here
+   SARVAM_API_KEY=your_sarvam_key_here
+   ```
+4. Run `node local-server.js`.
+5. Open `http://localhost:3000` and prepare to be insulted.
+
+---
+
+## 🎭 The Masterminds
+
+**Team Name:** The Unhandled Exceptions
+- **Lead Astrologer:** Zephyr - College of Copy/Pasting from StackOverflow
+- **Vibe Manager:** [Your Name] - University of "It works on my machine"
+- **Bug Creator:** [Your Friend's Name] - Institute of Missing Semicolons
+
+*(P.S. We renamed `local-server.js` to keep Vercel happy. Long story.)*
