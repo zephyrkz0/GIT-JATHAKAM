@@ -1,21 +1,13 @@
 {
   "version": 2,
-  "rewrites": [
-    {
-      "source": "/jaathakam",
-      "destination": "/api/jaathakam"
-    },
-    {
-      "source": "/tts",
-      "destination": "/api/tts"
-    },
-    {
-      "source": "/",
-      "destination": "/public/index.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/public/$1"
-    }
+  "builds": [
+    { "src": "api/**/*.js", "use": "@vercel/node" },
+    { "src": "public/**/*", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/jaathakam", "dest": "/api/jaathakam.js" },
+    { "src": "/tts", "dest": "/api/tts.js" },
+    { "src": "/(.*)", "dest": "/public/$1" },
+    { "src": "/", "dest": "/public/index.html" }
   ]
 }
