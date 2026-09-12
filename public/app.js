@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1. Hide input, show loading
         errorMsg.style.display = 'none';
         inputSection.style.display = 'none';
-        loadingSection.style.display = 'block';
+        loadingSection.style.display = 'flex';
 
         try {
             // 2. Fetch data from backend
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resultSection.style.display = 'block';
             
             // 4. Start typing effect
-            typeWriterEffect(data.text, data.audio);
+            typeWriterEffect(data.text, language);
 
         } catch (error) {
             loadingSection.style.display = 'none';
@@ -89,11 +89,13 @@ document.addEventListener('DOMContentLoaded', () => {
         inputSection.style.display = 'block';
     });
 
-    function typeWriterEffect(text, audioDataUri) {
+    function typeWriterEffect(text, language) {
         revealedText.innerHTML = '';
         
         let i = 0;
         const speed = 40; // ms per character
+        let generatedAudioUri = null;
+        let isGeneratingAudio = false;
 
         function type() {
             if (i < text.length) {
@@ -101,20 +103,50 @@ document.addEventListener('DOMContentLoaded', () => {
                 i++;
                 setTimeout(type, speed);
             } else {
-                // Show audio button if TTS succeeded
-                if (audioDataUri) {
-                    audioContainer.style.display = 'block';
-                    
-                    // Setup audio player
-                    playAudioBtn.onclick = () => {
-                        if (currentAudio) {
-                            currentAudio.pause();
-                            currentAudio.currentTime = 0;
-                        }
-                        currentAudio = new Audio(audioDataUri);
+                // Show audio button
+                audioContainer.style.display = 'block';
+                
+                // Setup audio player
+                playAudioBtn.onclick = async () => {
+                    if (currentAudio) {
+                        currentAudio.pause();
+                        currentAudio.currentTime = 0;
+                    }
+
+                    if (generatedAudioUri) {
+                        currentAudio = new Audio(generatedAudioUri);
                         currentAudio.play();
-                    };
-                }
+                        return;
+                    }
+
+                    if (isGeneratingAudio) return;
+                    isGeneratingAudio = true;
+                    
+                    const originalText = playAudioBtn.textContent;
+                    playAudioBtn.textContent = 'Summoning voice...';
+
+                    try {
+                        const response = await fetch('/tts', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ text, language })
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (!response.ok) throw new Error(data.error);
+                        
+                        generatedAudioUri = data.audio;
+                        currentAudio = new Audio(generatedAudioUri);
+                        currentAudio.play();
+                    } catch (err) {
+                        console.error('Failed to play audio:', err);
+                        alert('Could not generate audio right now.');
+                    } finally {
+                        playAudioBtn.textContent = originalText;
+                        isGeneratingAudio = false;
+                    }
+                };
             }
         }
         

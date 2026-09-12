@@ -37,24 +37,30 @@ app.post('/jaathakam', async (req, res) => {
         // 4. LLM Generation
         const generatedText = await generateJoke(username, language, facts);
 
-        // 5. TTS Integration (Bulbul model)
-        let audioPayload = null;
-        try {
-            audioPayload = await generateTTS(generatedText, language);
-        } catch (ttsError) {
-            console.error('TTS Generation failed, falling back to text only:', ttsError);
-        }
-
-        // 6. Response
+        // 5. Response
         res.json({
             stats,
-            text: generatedText,
-            audio: audioPayload
+            text: generatedText
         });
 
     } catch (error) {
         console.error('Error generating Jaathakam:', error);
         res.status(500).json({ error: 'Failed to generate Jaathakam. The stars are clouded today.' });
+    }
+});
+
+app.post('/tts', async (req, res) => {
+    try {
+        const { text, language = 'en' } = req.body;
+        if (!text) {
+            return res.status(400).json({ error: 'Text is required for TTS' });
+        }
+        
+        const audioPayload = await generateTTS(text, language);
+        res.json({ audio: audioPayload });
+    } catch (error) {
+        console.error('TTS Generation failed:', error);
+        res.status(500).json({ error: 'Failed to generate speech.' });
     }
 });
 

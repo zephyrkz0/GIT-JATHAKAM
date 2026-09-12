@@ -1,17 +1,20 @@
-const { GoogleGenAI } = require('@google/genai');
+const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 
 async function generateJoke(username, language, facts) {
-    if (!process.env.GEMINI_API_KEY) {
-        throw new Error('GEMINI_API_KEY is not set');
+    if (!process.env.GROK_API_KEY) {
+        throw new Error('GROK_API_KEY is not set');
     }
 
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    
     // Load reference jokes
     const referencesPath = path.join(__dirname, '../prompts/references.json');
-    const allReferences = JSON.parse(fs.readFileSync(referencesPath, 'utf8'));
+    let allReferences = { en: [], ml: [] };
+    try {
+        allReferences = JSON.parse(fs.readFileSync(referencesPath, 'utf8'));
+    } catch (e) {
+        console.warn('Failed to load references.json, continuing without references.');
+    }
     const langReferences = allReferences[language] || allReferences['en'];
     const referenceJokesStr = langReferences.join('\n');
 
@@ -22,35 +25,42 @@ async function generateJoke(username, language, facts) {
 Your goal is to roast the user's GitHub commit habits by turning them into an astrology reading (Jaathakam).
 Use a sarcastic, mystical tone.
 
-Target Language: ${language === 'ml' ? 'Malayalam (Code-mixed with English for technical terms)' : 'English with Indian astrology flavor'}.
+Target Language: ${language === 'ml' ? 'Malayalam (Code-mixed with English for technical terms, using Malayalam script)' : 'English with Indian astrology flavor'}.
 
 Facts to include in this reading:
 ${factsStr}
 
 Style Guidelines:
-- Write ONE single cohesive paragraph or a few punchy lines tying these facts together.
-- Do NOT reproduce any of the reference examples verbatim; write an original joke.
+- Write ONE single cohesive paragraph tying these facts together.
+- Use the reference jokes below for inspiration, but do NOT just copy-paste them. Blend the facts into an original roast in that same style!
 - The reading must feel like an authentic Kerala Jyothishyan delivering a brutal verdict on their coding life.
-- Do not include preamble or postamble (like "Here is your joke:"). Just output the final roast.
+- DO NOT output any preamble like "Here is your joke" or any english translation. Just give the raw roast output.
 
-Here are some reference examples for the exact tone and style:
+Reference Examples of the tone:
 ${referenceJokesStr}
 `;
 
     const prompt = `Write the GitHub Jaathakam reading for user: ${username}`;
 
     try {
-        const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
-            contents: [
-                { role: 'user', parts: [{ text: persona + '\n\n' + prompt }] }
-            ]
+        const response = await axios.post('https://api.x.ai/v1/chat/completions', {
+            model: "grok-beta",
+            messages: [
+                { role: "system", content: persona },
+                { role: "user", content: prompt }
+            ],
+            temperature: 0.8
+        }, {
+            headers: {
+                'Authorization': `Bearer ${process.env.GROK_API_KEY}`,
+                'Content-Type': 'application/json'
+            }
         });
 
-        return response.text;
+        return response.data.choices[0].message.content.trim();
     } catch (error) {
-        console.error('Gemini generation error:', error);
-        throw new Error('Failed to consult the stars (LLM Error)');
+        console.error('Grok generation error:', error.response?.data || error.message);
+        throw new Error('Failed to consult the stars (Grok LLM Error)');
     }
 }
 
