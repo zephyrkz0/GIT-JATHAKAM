@@ -44,9 +44,9 @@ ${referenceJokesStr}
     const prompt = `Write the GitHub Jaathakam reading for user: ${username}`;
 
     try {
-        console.log(`[Gemini] Generating Jaathakam with model: gemini-3.6-flash for user: ${username}`);
+        console.log(`[Gemini] Generating Jaathakam with model: gemini-3.8-flash for user: ${username}`);
         const response = await ai.models.generateContent({
-            model: 'gemini-3.6-flash',
+            model: 'gemini-3.8-flash',
             contents: [
                 { role: 'user', parts: [{ text: persona + '\n\n' + prompt }] }
             ]
